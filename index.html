@@ -1,0 +1,421 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>University Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            🎓 <span>UniConnect</span>
+        </div>
+
+        <nav>
+            <button class="nav-btn active" onclick="showSection('dashboard')">
+                🏠 Dashboard
+            </button>
+
+            <button class="nav-btn" onclick="showSection('students')">
+                👨‍🎓 Students
+            </button>
+
+            <button class="nav-btn" onclick="showSection('courses')">
+                📚 Courses
+            </button>
+
+            <button class="nav-btn" onclick="showSection('network')">
+                🕸️ Semantic Network
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>University System</p>
+            <small>Course & Student Management</small>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div>
+                <h1 id="pageTitle">Dashboard</h1>
+                <p>University Course & Student Management</p>
+            </div>
+
+            <div class="profile">
+                <div class="profile-icon">👤</div>
+                <div>
+                    <b>Administrator</b>
+                    <small>University Admin</small>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="section active-section">
+
+            <div class="welcome">
+                <div>
+                    <h2>Welcome to UniConnect 👋</h2>
+                    <p>
+                        Manage students, courses and relationships
+                        using a semantic network.
+                    </p>
+                </div>
+
+                <button onclick="showSection('network')">
+                    View Network →
+                </button>
+            </div>
+
+
+            <!-- STAT CARDS -->
+            <div class="stats">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">👨‍🎓</div>
+                    <div>
+                        <p>Total Students</p>
+                        <h2 id="studentCount">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">📚</div>
+                    <div>
+                        <p>Total Courses</p>
+                        <h2 id="courseCount">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">🏫</div>
+                    <div>
+                        <p>Departments</p>
+                        <h2 id="departmentCount">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">🔗</div>
+                    <div>
+                        <p>Relationships</p>
+                        <h2 id="relationshipCount">0</h2>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- DASHBOARD GRID -->
+            <div class="dashboard-grid">
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <h3>Course Enrollment</h3>
+                    </div>
+
+                    <canvas id="courseChart"></canvas>
+                </div>
+
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <h3>Recent Students</h3>
+                    </div>
+
+                    <div id="recentStudents"></div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STUDENTS -->
+        <section id="students" class="section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Student Management</h2>
+                    <p>Add and manage university students.</p>
+                </div>
+
+                <button class="primary-btn" onclick="openStudentModal()">
+                    + Add Student
+                </button>
+            </div>
+
+
+            <div class="search-box">
+                🔍
+                <input
+                    type="text"
+                    id="studentSearch"
+                    placeholder="Search students..."
+                    onkeyup="displayStudents()"
+                >
+            </div>
+
+
+            <div class="table-panel">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Student</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Courses</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentTable"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- COURSES -->
+        <section id="courses" class="section">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Course Management</h2>
+                    <p>Manage university courses and faculty.</p>
+                </div>
+
+                <button class="primary-btn" onclick="openCourseModal()">
+                    + Add Course
+                </button>
+
+            </div>
+
+
+            <div class="search-box">
+                🔍
+                <input
+                    type="text"
+                    id="courseSearch"
+                    placeholder="Search courses..."
+                    onkeyup="displayCourses()"
+                >
+            </div>
+
+
+            <div class="course-grid" id="courseGrid"></div>
+
+        </section>
+
+
+        <!-- SEMANTIC NETWORK -->
+        <section id="network" class="section">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Semantic Network</h2>
+                    <p>
+                        Visual representation of relationships between
+                        students, courses, faculty and departments.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="network-info">
+
+                <div>
+                    <span class="legend student-node"></span>
+                    Student
+                </div>
+
+                <div>
+                    <span class="legend course-node"></span>
+                    Course
+                </div>
+
+                <div>
+                    <span class="legend faculty-node"></span>
+                    Faculty
+                </div>
+
+                <div>
+                    <span class="legend department-node"></span>
+                    Department
+                </div>
+
+            </div>
+
+
+            <div class="network">
+
+                <svg id="networkSvg"></svg>
+
+                <div id="networkNodes"></div>
+
+            </div>
+
+
+            <div class="relationship-box">
+
+                <h3>Semantic Relationships</h3>
+
+                <div class="relationship-list">
+
+                    <div>
+                        <b>Student</b>
+                        <span>→ enrolled in →</span>
+                        <b>Course</b>
+                    </div>
+
+                    <div>
+                        <b>Course</b>
+                        <span>→ taught by →</span>
+                        <b>Faculty</b>
+                    </div>
+
+                    <div>
+                        <b>Course</b>
+                        <span>→ belongs to →</span>
+                        <b>Department</b>
+                    </div>
+
+                    <div>
+                        <b>Student</b>
+                        <span>→ belongs to →</span>
+                        <b>Department</b>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- STUDENT MODAL -->
+    <div id="studentModal" class="modal">
+
+        <div class="modal-content">
+
+            <span class="close" onclick="closeStudentModal()">×</span>
+
+            <h2>Add Student</h2>
+
+            <form onsubmit="addStudent(event)">
+
+                <label>Student ID</label>
+                <input id="studentId" required>
+
+                <label>Student Name</label>
+                <input id="studentName" required>
+
+                <label>Email</label>
+                <input id="studentEmail" type="email" required>
+
+                <label>Department</label>
+
+                <select id="studentDepartment" required>
+                    <option value="">Select Department</option>
+                    <option>Computer Science</option>
+                    <option>Electronics</option>
+                    <option>Mechanical</option>
+                    <option>Business Administration</option>
+                    <option>Mathematics</option>
+                </select>
+
+                <label>Course</label>
+
+                <select id="studentCourse" required></select>
+
+                <button class="primary-btn" type="submit">
+                    Add Student
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- COURSE MODAL -->
+    <div id="courseModal" class="modal">
+
+        <div class="modal-content">
+
+            <span class="close" onclick="closeCourseModal()">×</span>
+
+            <h2>Add Course</h2>
+
+            <form onsubmit="addCourse(event)">
+
+                <label>Course ID</label>
+                <input id="courseId" required>
+
+                <label>Course Name</label>
+                <input id="courseName" required>
+
+                <label>Credits</label>
+                <input id="courseCredits" type="number" min="1" max="10" required>
+
+                <label>Faculty</label>
+                <input id="courseFaculty" required>
+
+                <label>Department</label>
+
+                <select id="courseDepartment" required>
+                    <option value="">Select Department</option>
+                    <option>Computer Science</option>
+                    <option>Electronics</option>
+                    <option>Mechanical</option>
+                    <option>Business Administration</option>
+                    <option>Mathematics</option>
+                </select>
+
+                <button class="primary-btn" type="submit">
+                    Add Course
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```

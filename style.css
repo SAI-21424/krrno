@@ -1,0 +1,796 @@
+css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #172033;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 250px;
+    height: 100vh;
+
+    background: #10182f;
+    color: white;
+
+    padding: 25px 18px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+
+    padding: 10px;
+    margin-bottom: 40px;
+}
+
+.logo span {
+    margin-left: 8px;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-btn {
+    border: none;
+    background: transparent;
+
+    color: #b7bfd5;
+
+    text-align: left;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background: #28345c;
+    color: white;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+
+    padding: 15px;
+
+    color: #929bb8;
+
+    border-top: 1px solid #303957;
+}
+
+.sidebar-bottom p {
+    color: white;
+    margin-bottom: 5px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    margin-left: 250px;
+    min-height: 100vh;
+}
+
+.header {
+    height: 85px;
+
+    background: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 35px;
+
+    border-bottom: 1px solid #e5e8ef;
+}
+
+.header h1 {
+    font-size: 25px;
+}
+
+.header p {
+    color: #7c8497;
+    margin-top: 4px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #e8ecff;
+
+    display: grid;
+    place-items: center;
+}
+
+.profile small {
+    display: block;
+    color: #8790a5;
+    margin-top: 3px;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    display: none;
+    padding: 30px;
+}
+
+.active-section {
+    display: block;
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome {
+    background: linear-gradient(120deg, #283a86, #5269d9);
+
+    color: white;
+
+    padding: 30px;
+
+    border-radius: 16px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.welcome h2 {
+    margin-bottom: 8px;
+}
+
+.welcome p {
+    opacity: 0.85;
+}
+
+.welcome button {
+    border: none;
+    background: white;
+    color: #34489c;
+
+    padding: 13px 20px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+}
+
+.stat-card p {
+    color: #81899c;
+    font-size: 14px;
+}
+
+.stat-card h2 {
+    margin-top: 7px;
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 12px;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 22px;
+}
+
+.blue {
+    background: #e8f1ff;
+}
+
+.purple {
+    background: #eee8ff;
+}
+
+.green {
+    background: #e5f8ee;
+}
+
+.orange {
+    background: #fff1df;
+}
+
+
+/* =========================
+   PANELS
+========================= */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.4fr 1fr;
+
+    gap: 20px;
+}
+
+.panel,
+.table-panel {
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 22px;
+
+    box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+}
+
+.panel-header {
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   STUDENTS / COURSES
+========================= */
+
+.section-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 22px;
+}
+
+.section-heading p {
+    color: #7e8799;
+
+    margin-top: 5px;
+}
+
+.primary-btn {
+    border: none;
+
+    background: #4257c9;
+
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.primary-btn:hover {
+    background: #3447af;
+}
+
+.search-box {
+    background: white;
+
+    border: 1px solid #e0e4ec;
+
+    border-radius: 9px;
+
+    padding: 12px 15px;
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+
+    color: #737d92;
+
+    font-size: 13px;
+
+    padding: 14px;
+
+    border-bottom: 1px solid #e6e9ef;
+}
+
+td {
+    padding: 15px;
+
+    border-bottom: 1px solid #eef0f4;
+
+    font-size: 14px;
+}
+
+.delete-btn {
+    border: none;
+
+    background: #ffe8e8;
+
+    color: #d33c3c;
+
+    padding: 7px 10px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   COURSE CARDS
+========================= */
+
+.course-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.course-card {
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 14px;
+
+    border: 1px solid #e7eaf1;
+
+    transition: 0.3s;
+}
+
+.course-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.08);
+}
+
+.course-id {
+    color: #4d61d2;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+.course-card h3 {
+    margin: 10px 0;
+}
+
+.course-card p {
+    color: #737d91;
+
+    margin: 7px 0;
+}
+
+
+/* =========================
+   RECENT STUDENTS
+========================= */
+
+.recent-student {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid #edf0f4;
+}
+
+.recent-student small {
+    color: #858da0;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(10,15,30,0.55);
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 100;
+}
+
+.modal-content {
+    background: white;
+
+    width: 430px;
+
+    max-width: 90%;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    position: relative;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.close {
+    position: absolute;
+
+    right: 20px;
+
+    top: 15px;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    color: #777;
+}
+
+.modal-content form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+.modal-content label {
+    font-size: 13px;
+
+    color: #687187;
+
+    margin-top: 5px;
+}
+
+.modal-content input,
+.modal-content select {
+    padding: 11px;
+
+    border: 1px solid #d9deea;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+    border-color: #5268d7;
+}
+
+.modal-content button {
+    margin-top: 15px;
+}
+
+
+/* =========================
+   SEMANTIC NETWORK
+========================= */
+
+.network-info {
+    background: white;
+
+    padding: 15px 20px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    gap: 25px;
+
+    margin-bottom: 20px;
+
+    flex-wrap: wrap;
+}
+
+.network-info div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-size: 14px;
+}
+
+.legend {
+    width: 13px;
+    height: 13px;
+
+    border-radius: 50%;
+
+    display: inline-block;
+}
+
+.student-node {
+    background: #5268db;
+}
+
+.course-node {
+    background: #8a55d6;
+}
+
+.faculty-node {
+    background: #28a879;
+}
+
+.department-node {
+    background: #e69535;
+}
+
+.network {
+    position: relative;
+
+    height: 500px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #ffffff 0%,
+            #eef2fa 100%
+        );
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    border: 1px solid #dde2ec;
+}
+
+#networkSvg {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    inset: 0;
+}
+
+#networkNodes {
+    position: absolute;
+
+    inset: 0;
+}
+
+.network-node {
+    position: absolute;
+
+    transform: translate(-50%, -50%);
+
+    min-width: 110px;
+
+    padding: 12px;
+
+    text-align: center;
+
+    border-radius: 50px;
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.network-node small {
+    display: block;
+
+    font-weight: normal;
+
+    margin-top: 3px;
+
+    opacity: 0.8;
+}
+
+.relationship-box {
+    background: white;
+
+    margin-top: 20px;
+
+    padding: 22px;
+
+    border-radius: 14px;
+}
+
+.relationship-list {
+    margin-top: 15px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+.relationship-list div {
+    background: #f6f8fc;
+
+    padding: 15px;
+
+    border-radius: 9px;
+}
+
+.relationship-list span {
+    color: #788198;
+
+    margin: 0 8px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 1000px) {
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 700px) {
+
+    .sidebar {
+        width: 70px;
+        padding: 15px 8px;
+    }
+
+    .logo span,
+    .nav-btn {
+        font-size: 0;
+    }
+
+    .nav-btn {
+        text-align: center;
+    }
+
+    .main {
+        margin-left: 70px;
+    }
+
+    .stats,
+    .course-grid,
+    .relationship-list {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome {
+        flex-direction: column;
+        gap: 20px;
+
+        align-items: flex-start;
+    }
+
+    table {
+        min-width: 750px;
+    }
+
+    .table-panel {
+        overflow-x: auto;
+    }
+}
+
